@@ -1,8 +1,9 @@
 from flask import Flask, request, jsonify, render_template, url_for
 from flask_sqlalchemy import SQLAlchemy
-
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 app.app_context().push()
 
 app.config['SECRET_KEY'] = 'helloworld'
