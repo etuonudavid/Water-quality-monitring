@@ -1,0 +1,111 @@
+{% extends "layout.html" %}
+{% block content %}
+<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Dashboard</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+      <div class="btn-group me-2">
+        <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
+        <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
+      </div>
+      <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle d-flex align-items-center gap-1">
+        <svg class="bi"><use xlink:href="#calendar3"/></svg>
+        This week
+      </button>
+    </div>
+  </div>
+
+  <div class="row mb-4">
+    <div class="col-md-3">
+        <div class="card text-center">
+            <div class="card-body">
+                <svg class="bi" width="2em" height="2em"><use xlink:href="#thermometer"/></svg>
+                <h5 class="card-title">Temperature</h5>
+                <p class="card-text" id="temperatureValue">-°C</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card text-center">
+            <div class="card-body">
+                <svg class="bi" width="2em" height="2em"><use xlink:href="#ph"/></svg>
+                <h5 class="card-title">pH</h5>
+                <p class="card-text"  id="phValue">-</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card text-center">
+            <div class="card-body">
+                <svg class="bi" width="2em" height="2em"><use xlink:href="#turbidity"/></svg>
+                <h5 class="card-title" >Turbidity</h5>
+                <p class="card-text" id="turbidityValue">- NTU</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card text-center">
+            <div class="card-body">
+                <svg class="bi" width="2em" height="2em"><use xlink:href="#tds"/></svg>
+                <h5 class="card-title" >TDS</h5>
+                <p class="card-text" id="tdsValue">- ppm</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+  <div class="row">
+  <div class="col-md-6">
+    <!-- First Chart -->
+    <div class="card mb-4">
+      <div class="card-header">
+        Chart 1
+      </div>
+      <div class="card-body">
+        <canvas id="chart1" width="400" height="400"></canvas>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <!-- Second Chart -->
+    <div class="card mb-4">
+      <div class="card-header">
+        Chart 2
+      </div>
+      <div class="card-body">
+        <canvas id="chart2" width="400" height="400"></canvas>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6">
+    <!-- Third Chart -->
+    <div class="card mb-4">
+      <div class="card-header">
+        Chart 3
+      </div>
+      <div class="card-body">
+        <canvas id="chart3" width="400" height="400"></canvas>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <!-- Fourth Chart -->
+    <div class="card mb-4">
+      <div class="card-header">
+        Chart 4
+      </div>
+      <div class="card-body">
+        <canvas id="chart4" width="400" height="400"></canvas>
+      </div>
+    </div>
+  </div>
+</div>
+</main>
+{% endblock %}
