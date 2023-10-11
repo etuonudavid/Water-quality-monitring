@@ -30,6 +30,7 @@ function updateTableData() {
     })
     .catch(error => {
       console.error('Error fetching real-time data:', error);
+      console.error(error.stack);
     });
 }
 

@@ -1,93 +1,7 @@
- // var data1 = {
- //        labels: ["January", "February", "March", "April", "May"],
- //        datasets: [{
- //            label: "Temperature Graph",
- //            data: [10, 20, 15, 30, 25],
- //            backgroundColor: "rgba(75, 192, 192, 0.2)",
- //            borderColor: "rgba(75, 192, 192, 1)",
- //            borderWidth: 1
- //        }]
- //    };
-
- //    var data2 = {
- //        labels: ["Red", "Blue", "Yellow", "Green", "Purple"],
- //        datasets: [{
- //            label: "pH graph",
- //            data: [15, 25, 10, 35, 20],
- //            backgroundColor: "rgba(255, 99, 132, 0.2)",
- //            borderColor: "rgba(255, 99, 132, 1)",
- //            borderWidth: 1
- //        }]
- //    };
-
- //    var data3 = {
- //        labels: ["A", "B", "C", "D", "E"],
- //        datasets: [{
- //            label: "Turbidity Graph",
- //            data: [30, 25, 20, 15, 10],
- //            backgroundColor: "rgba(255, 206, 86, 0.2)",
- //            borderColor: "rgba(255, 206, 86, 1)",
- //            borderWidth: 1
- //        }]
- //    };
-
- //    var data4 = {
- //        labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
- //        datasets: [{
- //            label: "TDS Graph",
- //            data: [5, 10, 15, 20, 25],
- //            backgroundColor: "rgba(54, 162, 235, 0.2)",
- //            borderColor: "rgba(54, 162, 235, 1)",
- //            borderWidth: 1
- //        }]
- //    };
-
- //    // Configuration options for the charts
- //    var options = {
- //        responsive: true,
- //        maintainAspectRatio: false,
- //        scales: {
- //            y: {
- //                beginAtZero: true
- //            }
- //        }
- //    };
-
- //    // Create four chart instances
- //    var ctx1 = document.getElementById('chart1').getContext('2d');
- //    var ctx2 = document.getElementById('chart2').getContext('2d');
- //    var ctx3 = document.getElementById('chart3').getContext('2d');
- //    var ctx4 = document.getElementById('chart4').getContext('2d');
-
- //    var chart1 = new Chart(ctx1, {
- //        type: 'line',
- //        data: data1,
- //        options: options
- //    });
-
- //    var chart2 = new Chart(ctx2, {
- //        type: 'line',
- //        data: data2,
- //        options: options
- //    });
-
- //    var chart3 = new Chart(ctx3, {
- //        type: 'line',
- //        data: data3,
- //        options: options
- //    });
-
- //    var chart4 = new Chart(ctx4, {
- //        type: 'line',
- //        data: data4,
- //        options: options
- //    });
-
-
 
 // Function to fetch and update real-time data
 function updateRealtimeData() {
-  fetch('http://127.0.0.1:5000/send_data') // Replace with the actual endpoint for fetching data
+  fetch('https://wqms.onrender.com//send_data') // Replace with the actual endpoint for fetching data
     .then(response => response.json())
     .then(data => {
       // Extract hours and minutes from the timestamp and format as "hh:mm"
@@ -120,6 +34,7 @@ function updateRealtimeData() {
     })
     .catch(error => {
       console.error('Error fetching real-time data:', error);
+      console.error(error.stack);
     });
 }
 

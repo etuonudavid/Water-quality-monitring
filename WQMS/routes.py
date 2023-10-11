@@ -1,17 +1,6 @@
-from flask import Flask, request, jsonify, render_template, url_for
-from flask_sqlalchemy import SQLAlchemy
-from flask_cors import CORS
-
-app = Flask(__name__)
-CORS(app)
-app.app_context().push()
-
-app.config['SECRET_KEY'] = 'helloworld'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'  # SQLite database
-
-db = SQLAlchemy(app)
-
-from Model import SensorData
+from flask import request, jsonify, render_template, url_for
+from WQMS import app, db
+from WQMS.Model import SensorData
 
 @app.route('/')
 def home():
@@ -64,11 +53,7 @@ def get_data():
                 'ph': item.ph
             }
             data_list.append(data_entry)
-
+            print(data_list)
         return jsonify(data_list), 200
     except Exception as e:
         return str(e), 400
-
-
-if __name__ == '__main__':
-    app.run(debug=True)
