@@ -53,7 +53,6 @@ def get_data():
                 'ph': item.ph
             }
             data_list.append(data_entry)
-            print(data_list)
         return jsonify(data_list), 200
     except Exception as e:
         return str(e), 400
