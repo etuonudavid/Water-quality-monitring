@@ -1,6 +1,6 @@
 // Function to fetch and update the table with real-time data
 function updateTableData() {
-  fetch('http://127.0.0.1:5000/send_data') // Replace with the actual endpoint for fetching data
+  fetch('https://wqms.onrender.com//send_data') // Replace with the actual endpoint for fetching data
     .then(response => response.json())
     .then(data => {
       console.log('Data received:', data);
