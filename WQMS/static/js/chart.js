@@ -12,34 +12,40 @@ function updateRealtimeData() {
         return `${hours}:${minutes}`;
       });
 
+      // Trim data to the most recent 20 data points
+      const newData = data.slice(-20);
+      const newTimestamps = formattedTimestamps.slice(-20);
+
       // Update Chart 1
-      chart1.data.labels = formattedTimestamps;
-      chart1.data.datasets[0].data = data.map(entry => entry.temperature);
-      chart1.data.datasets[1].data = Array(data.length).fill(thresholdValue1); // Add threshold data
+      chart1.data.labels = newTimestamps;
+      chart1.data.datasets[0].data = newData.map(entry => entry.temperature);
+      chart1.data.datasets[1].data = Array(newData.length).fill(thresholdValue1); // Add threshold data
       chart1.update();
 
       // Update Chart 2
-      chart2.data.labels = formattedTimestamps;
-      chart2.data.datasets[0].data = data.map(entry => entry.ph);
-      chart2.data.datasets[1].data = Array(data.length).fill(thresholdValue2); // Add threshold data
+      chart2.data.labels = newTimestamps;
+      chart2.data.datasets[0].data = newData.map(entry => entry.ph);
+      chart2.data.datasets[1].data = Array(newData.length).fill(thresholdValue2); // Add threshold data
       chart2.update();
 
       // Update Chart 3
-      chart3.data.labels = formattedTimestamps;
-      chart3.data.datasets[0].data = data.map(entry => entry.turbidity);
-      chart3.data.datasets[1].data = Array(data.length).fill(thresholdValue3); // Add threshold data
+      chart3.data.labels = newTimestamps;
+      chart3.data.datasets[0].data = newData.map(entry => entry.turbidity);
+      chart3.data.datasets[1].data = Array(newData.length).fill(thresholdValue3); // Add threshold data
       chart3.update();
 
       // Update Chart 4
-      chart4.data.labels = formattedTimestamps;
-      chart4.data.datasets[0].data = data.map(entry => entry.tds);
-      chart4.data.datasets[1].data = Array(data.length).fill(thresholdValue4); // Add threshold data
+      chart4.data.labels = newTimestamps;
+      chart4.data.datasets[0].data = newData.map(entry => entry.tds);
+      chart4.data.datasets[1].data = Array(newData.length).fill(thresholdValue4); // Add threshold data
       chart4.update();
     })
     .catch(error => {
       console.error('Error fetching real-time data:', error);
     });
 }
+
+
 
 // Set your threshold values here
 var thresholdValue1 = 25; // Threshold for Chart 1 (Temperature)
