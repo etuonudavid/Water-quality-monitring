@@ -1,6 +1,6 @@
 // Function to fetch and update card values with real-time data
 function updateCardValues() {
-  fetch('http://127.0.0.1:5000/send_data') // Replace with your Flask app's URL
+  fetch('https://wqms.onrender.com/send_data') // Replace with your Flask app's URL
     .then(response => response.json())
     .then(data => {
       console.log('Data received:', data)
