@@ -1,7 +1,23 @@
 import pandas as pd
 from flask import request, jsonify, render_template, url_for, Response
-from WQMS import app, db
+from WQMS import app, db, mail
 from WQMS.Model import SensorData
+from flask_mail import Message
+from datetime import datetime
+
+
+# Define the email alert interval (12 hours)
+alert_interval = 43200  # 12 hours minutes in seconds
+last_alert_time = None
+
+thresholdValues = {
+    'temperature': 25,  # Set your temperature threshold value
+    'ph': 6.5,          # Set your pH threshold value
+    'turbidity': 15,    # Set your turbidity threshold value
+    'tds': 100          # Set your TDS threshold value
+}
+
+
 
 @app.route('/')
 def home():
@@ -34,9 +50,47 @@ def receive_data():
         db.session.add(sensor_data)
         db.session.commit()
 
+
+        # Call the send_email_alert function
+        send_email_alert(data, thresholdValues)
+
         return "Data received and saved successfully", 200
     except Exception as e:
         return str(e), 400
+
+# Function to send email alert
+def send_email_alert(data, thresholdValues):
+    global last_alert_time
+
+    current_time = datetime.now()
+
+    if (
+        not last_alert_time or
+        (current_time - last_alert_time).seconds >= alert_interval
+    ):
+        # Send an email alert
+        last_alert_time = current_time
+
+        # Create the email message
+        msg = Message('Sensor Data Alert', sender='monitoringwaterquality176@gmail.com', recipients=['davidetuonu15@gmail.com'])  # Replace with your recipient's email
+        current_data = data
+        alert_message = ''
+
+        if current_data['temperature'] > thresholdValues['temperature']:
+            alert_message += 'Temperature value exceeded the threshold.\n'
+
+        if current_data['ph'] > thresholdValues['ph']:
+            alert_message += 'pH value exceeded the threshold.\n'
+
+        if current_data['turbidity'] > thresholdValues['turbidity']:
+            alert_message += 'Turbidity value exceeded the threshold.\n'
+
+        if current_data['tds'] > thresholdValues['tds']:
+            alert_message += 'TDS value exceeded the threshold.\n'
+
+        if alert_message:
+            msg.body = alert_message
+            mail.send(msg)
 
 #This route sends the data to the front end
 @app.route('/send_data', methods=['GET'])

@@ -6,7 +6,7 @@ function checkDataAndShowAlerts(data, thresholdValues) {
   if (!currentData) return; // Prevent errors when no data is available
 
   const showAlertForParameter = (parameter, value) => {
-    showAlertMessage('danger', `${parameter} value exceeded the threshold!`);
+    showAlertMessage('danger', `${parameter} Parameter is unsuitable for drinking!`);
     lastShownAlertParameter = parameter;
   };
 
@@ -16,25 +16,25 @@ function checkDataAndShowAlerts(data, thresholdValues) {
   };
 
   if (currentData.temperature > thresholdValues.temperature) {
-    showAlertForParameter('Temperature', currentData.temperature);
+    showAlertForParameter('Water', currentData.temperature);
   } else if (lastShownAlertParameter === 'Temperature') {
     hideAlertForParameter();
   }
 
   if (currentData.ph > thresholdValues.ph) {
-    showAlertForParameter('pH', currentData.ph);
+    showAlertForParameter('Water', currentData.ph);
   } else if (lastShownAlertParameter === 'pH') {
     hideAlertForParameter();
   }
 
   if (currentData.turbidity > thresholdValues.turbidity) {
-    showAlertForParameter('Turbidity', currentData.turbidity);
+    showAlertForParameter('Water', currentData.turbidity);
   } else if (lastShownAlertParameter === 'Turbidity') {
     hideAlertForParameter();
   }
 
   if (currentData.tds > thresholdValues.tds) {
-    showAlertForParameter('TDS', currentData.tds);
+    showAlertForParameter('Water', currentData.tds);
   } else if (lastShownAlertParameter === 'TDS') {
     hideAlertForParameter();
   }
@@ -69,9 +69,9 @@ function fetchAndCheckData(thresholdValues) {
 
 const sampleThresholdValues = {
   temperature: 25,
-  ph: 6.5,
-  turbidity: 15,
-  tds: 100,
+  ph: 8.5,
+  turbidity: 350,
+  tds: 900,
 };
 
 setInterval(() => {
