@@ -6,7 +6,7 @@ function checkDataAndShowAlerts(data, thresholdValues) {
   if (!currentData) return; // Prevent errors when no data is available
 
   const showAlertForParameter = (parameter, value) => {
-    showAlertMessage('danger', `${parameter} Parameter is unsuitable for drinking!`);
+    showAlertMessage('danger', `${parameter} is unsuitable for drinking!`);
     lastShownAlertParameter = parameter;
   };
 

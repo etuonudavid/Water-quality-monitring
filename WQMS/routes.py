@@ -11,10 +11,10 @@ alert_interval = 43200  # 12 hours minutes in seconds
 last_alert_time = None
 
 thresholdValues = {
-    'temperature': 25,  # Set your temperature threshold value
-    'ph': 6.5,          # Set your pH threshold value
-    'turbidity': 15,    # Set your turbidity threshold value
-    'tds': 100          # Set your TDS threshold value
+    'temperature': 32,  # Set your temperature threshold value
+    'ph': 8.6,          # Set your pH threshold value
+    'turbidity': 900,    # Set your turbidity threshold value
+    'tds': 350          # Set your TDS threshold value
 }
 
 
