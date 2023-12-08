@@ -68,10 +68,10 @@ function fetchAndCheckData(thresholdValues) {
 }
 
 const sampleThresholdValues = {
-  temperature: 25,
-  ph: 8.5,
-  turbidity: 350,
-  tds: 900,
+  temperature: 32,
+  ph: 8.6,
+  turbidity: 900,
+  tds: 350,
 };
 
 setInterval(() => {

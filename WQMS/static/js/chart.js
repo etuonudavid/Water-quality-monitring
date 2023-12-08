@@ -48,10 +48,10 @@ function updateRealtimeData() {
 
 
 // Set your threshold values here
-var thresholdValue1 = 25; // Threshold for Chart 1 (Temperature)
-var thresholdValue2 = 6.5; // Threshold for Chart 2 (pH)
-var thresholdValue3 = 15;  // Threshold for Chart 3 (Turbidity)
-var thresholdValue4 = 100; // Threshold for Chart 4 (TDS)
+var thresholdValue1 = 35; // Threshold for Chart 1 (Temperature)
+var thresholdValue2 = 8.6; // Threshold for Chart 2 (pH)
+var thresholdValue3 = 900;  // Threshold for Chart 3 (Turbidity)
+var thresholdValue4 = 350; // Threshold for Chart 4 (TDS)
 
 var options = {
   responsive: true,
